@@ -1,4 +1,4 @@
-package cn.bruce.java1;
+package com.example.springboot1.controller.JavaSenior.Collection.src.cn.bruce.java1;
 
 import org.junit.Test;
 
