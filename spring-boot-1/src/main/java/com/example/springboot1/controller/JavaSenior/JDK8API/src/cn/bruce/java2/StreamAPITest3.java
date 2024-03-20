@@ -45,8 +45,6 @@ public class StreamAPITest3 {
         //findAny——返回当前流中的任意元素
         Optional<Employee> employee = employees.parallelStream().findAny();
         System.out.println(employee);
-
-
     }
 
     @Test
@@ -72,7 +70,6 @@ public class StreamAPITest3 {
         System.out.println();
         //使用集合的遍历操作
         employees.forEach(System.out::println);
-
     }
 
     //2-归约
@@ -89,7 +86,6 @@ public class StreamAPITest3 {
         List<Employee> employees = EmployeeData.getEmployees();
         Optional<Double> sumSalary = employees.stream().map(e -> e.getSalary()).reduce(Double::sum);
         System.out.println(sumSalary);
-
     }
 
     //3-收集
@@ -104,10 +100,6 @@ public class StreamAPITest3 {
         System.out.println();
         Set<Employee> employeeSet = employees.stream().filter(e -> e.getSalary() > 6000).collect(Collectors.toSet());
         employeeSet.forEach(System.out::println);
-
-
     }
-
-
 
 }
