@@ -8,8 +8,6 @@ import java.util.Comparator;
  * @Author wjw
  * @Description 使用Lambda表达式前后对比
  * @Date 2024/3/14 07:13
- * @Param
- * @return null
  */
 public class Lambda1Test {
     /***
