@@ -54,11 +54,12 @@ public class LambdaTest3 {
         Supplier<String> sp = new Supplier<String>() {
             @Override
             public String get() {
-                return new String("我能提供东西ƒ");
+                return new String("我能提供东西");
             }
         };
         System.out.println(sp.get());
         System.out.println("====================");
+
         //使用Lambda表达
         Supplier<String> sp1 = () -> new String("我能通过lambda提供东西");
         System.out.println(sp1.get());
@@ -88,7 +89,7 @@ public class LambdaTest3 {
      * @param pre
      * @return List<String>
      * @Author wjw
-     * @Description 根据p给定的规则，过滤集合中的字符串。此规则由Predicate的方法决定
+     * @Description 根据给定的规则，过滤集合中的字符串。此规则由Predicate的方法决定
      * @Date 2024/3/24 01:59
      */
     public List<String> filterString(List<String> list, Predicate<String> pre) {

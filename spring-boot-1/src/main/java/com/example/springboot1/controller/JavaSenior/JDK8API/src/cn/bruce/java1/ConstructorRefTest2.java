@@ -8,16 +8,20 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 一、构造器引用
- * <p>
- * 二、数组引用
- * <p>
- * <p>
- * Created by shkstart
+ * @Author wjw
+ * @Description 构造器和数组的引用
+ * 使用格式：
+ * 方法引用：类名 ::new
+ * 数组引用：数组类型 [] :: new
+ * @Date 2024/3/24 23:07
  */
-public class ConstructorRefTest {
-    //构造器引用
-    //Supplier中的T get()
+public class ConstructorRefTest2 {
+    /**
+     * @Author wjw
+     * @Description 构造器引用
+     * Supplier中的T get()
+     * @Date 2024/3/24 23:10
+     */
     @Test
     public void test1() {
         //使用匿名内部类
@@ -28,18 +32,22 @@ public class ConstructorRefTest {
             }
         };
         System.out.println(sup.get());
-        //使用Lambda表达式
         System.out.println("====================");
+
+        //使用Lambda表达式
         Supplier<Employee> sup1 = () -> new Employee(1001, "Tom", 43, 13333);
         System.out.println(sup1.get());
 
         //使用方法引用
         Supplier<Employee> sup2 = Employee::new;
         System.out.println(sup2.get());
-
     }
 
-    //Function中的R apply(T t)
+    /**
+     * @Author wjw
+     * @Description Function中的R apply(T t)
+     * @Date 2024/3/24 23:14
+     */
     @Test
     public void test2() {
         //使用Lambda表达式
@@ -52,10 +60,13 @@ public class ConstructorRefTest {
         Function<Integer, Employee> func2 = Employee::new;
         Employee employee1 = func2.apply(1002);
         System.out.println(employee1);
-
     }
 
-    //BiFunction中的R apply(T t,U u)
+    /**
+     * @Author wjw
+     * @Description BiFunction中的R apply(T t,U u)
+     * @Date 2024/3/24 23:14
+     */
     @Test
     public void test3() {
         //使用Lambda表达式
@@ -68,18 +79,21 @@ public class ConstructorRefTest {
         System.out.println(func2.apply(1002, "Jarry"));
     }
 
-    //数组引用
-    //Function中的R apply(T t)
+    /**
+     * @Author wjw
+     * @Description 数组引用
+     * Function中的R apply(T t)
+     * @Date 2024/3/24 23:15
+     */
     @Test
     public void test4() {
         Function<Integer, String[]> func1 = length -> new String[length];
         String[] arr1 = func1.apply(5);
         System.out.println(Arrays.toString(arr1));
-
         System.out.println("====================");
 
         //使用方法引用
-        Function<Integer,String[]>func2=String[]::new;
+        Function<Integer, String[]> func2 = String[]::new;
         String[] arr2 = func2.apply(10);
         System.out.println(Arrays.toString(arr2));
     }

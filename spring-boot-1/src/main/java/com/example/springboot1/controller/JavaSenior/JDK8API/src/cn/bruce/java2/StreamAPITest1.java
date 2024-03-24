@@ -9,44 +9,62 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-/**
- * 测试Stream的实例化
- *
- * @author bruce
- * @project_name JavaSenior
- * @package_name cn.bruce.java2
- * @create 2020-05-08 08:23
+/***
+ * @Author wjw
+ * @Description 测试Stream的实例化
+ * Stream 关注的是对数据的运算，与 CPU 打交道;集合关注的是数据的存储，与内存打交道;
+ * Java 8 提供了一套 api ，使用这套 api 可以对内存中的数据进行过滤、排序、映射、归约等操作。类似于 sql 对数据库中表的相关操作。
+ * Stream 是数据渠道，用于操作数据源（集合、数组等）所生成的元素序列。“集合讲的是数据， Stream讲的是计算！”
+ * @Date 2024/3/24 23:29
  */
 public class StreamAPITest1 {
-    //创建 Stream方式一：通过集合
+    /**
+     * @Author wjw
+     * @Description 创建 Stream方式一：通过集合
+     * @Date 2024/3/24 23:30
+     */
     @Test
     public void test1() {
         List<Employee> employees = EmployeeData.getEmployees();
-        //efault Stream<E> stream() : 返回一个顺序流
+        //default Stream<E> stream() : 返回一个顺序流
         Stream<Employee> stream = employees.stream();
+
         //default Stream<E> parallelStream() : 返回一个并行流
         Stream<Employee> employeeStream = employees.parallelStream();
     }
 
-    //创建 Stream方式二：通过数组
+    /**
+     * @Author wjw
+     * @Description 创建 Stream方式二：通过数组
+     * @Date 2024/3/24 23:31
+     */
     @Test
     public void test2() {
         int[] arrs = {1, 2, 3, 6, 2};
         //调用Arrays类的static <T> Stream<T> stream(T[] array): 返回一个流
         IntStream stream = Arrays.stream(arrs);
+
         Employee e1 = new Employee(1001, "Tom");
         Employee e2 = new Employee(1002, "Jerry");
         Employee[] employees = {e1, e2};
         Stream<Employee> stream1 = Arrays.stream(employees);
     }
 
-    //创建 Stream方式三：通过Stream的of()
+    /**
+     * @Author wjw
+     * @Description 创建 Stream方式三：通过Stream的of()
+     * @Date 2024/3/24 23:33
+     */
     @Test
     public void test3() {
         Stream<Integer> integerStream = Stream.of(12, 34, 45, 65, 76);
     }
 
-    //创建 Stream方式四：创建无限流
+    /**
+     * @Author wjw
+     * @Description 创建 Stream方式四：创建无限流
+     * @Date 2024/3/24 23:34
+     */
     @Test
     public void test4() {
         //迭代

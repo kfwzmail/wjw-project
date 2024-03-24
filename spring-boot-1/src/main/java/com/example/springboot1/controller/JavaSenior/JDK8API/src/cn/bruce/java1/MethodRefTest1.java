@@ -10,16 +10,19 @@ import java.util.function.Function;
 import java.util.function.Supplier;
 
 /**
- * 方法引用的使用
- * <p>
- * <p>
- * Created by Bruce
+ * @Author wjw
+ * @Description 方法引用的使用
+ * 使用格式：类(或对象) :: 方法名
+ * @Date 2024/3/24 22:08
  */
-public class MethodRefTest {
-
-    // 情况一：对象 :: 实例方法
-    //Consumer中的void accept(T t)
-    //PrintStream中的void println(T t)
+public class MethodRefTest1 {
+    /**
+     * @Author wjw
+     * @Description 情况一：对象 :: 实例方法
+     * Consumer中的void accept(T t)
+     * PrintStream中的void println(T t)
+     * @Date 2024/3/24 22:08
+     */
     @Test
     public void test1() {
         //使用Lambda表达
@@ -31,11 +34,14 @@ public class MethodRefTest {
         PrintStream ps = System.out;
         Consumer con2 = ps::println;
         con2.accept("China");
-
     }
 
-    //Supplier中的T get()
-    //Employee中的String getName()
+    /**
+     * @Author wjw
+     * @Description Supplier中的T get()
+     * Employee中的String getName()
+     * @Date 2024/3/24 22:59
+     */
     @Test
     public void test2() {
         //使用Lambda表达
@@ -47,13 +53,15 @@ public class MethodRefTest {
         //使用方法引用
         Supplier sup2 = emp::getName;
         System.out.println(sup2.get());
-
-
     }
 
-    // 情况二：类 :: 静态方法
-    //Comparator中的int compare(T t1,T t2)
-    //Integer中的int compare(T t1,T t2)
+    /**
+     * @Author wjw
+     * @Description 情况二：类 :: 静态方法
+     * Comparator中的int compare(T t1,T t2)
+     * Integer中的int compare(T t1,T t2)
+     * @Date 2024/3/24 23:00
+     */
     @Test
     public void test3() {
         //使用Lambda表达
@@ -66,8 +74,12 @@ public class MethodRefTest {
         System.out.println(com2.compare(43, 34));
     }
 
-    //Function中的R apply(T t)
-    //Math中的Long round(Double d)
+    /**
+     * @Author wjw
+     * @Description Function中的R apply(T t)
+     * Math中的Long round(Double d)
+     * @Date 2024/3/24 23:02
+     */
     @Test
     public void test4() {
         //使用匿名内部类
@@ -88,13 +100,15 @@ public class MethodRefTest {
         //使用方法引用
         Function<Double, Long> func2 = Math::round;
         System.out.println(func2.apply(12.6));
-
-
     }
 
-    // 情况三：类 :: 实例方法
-    // Comparator中的int comapre(T t1,T t2)
-    // String中的int t1.compareTo(t2)
+    /**
+     * @Author wjw
+     * @Description 情况三：类 :: 实例方法
+     * Comparator中的int comapre(T t1,T t2)
+     * String中的int t1.compareTo(t2)
+     * @Date 2024/3/24 23:03
+     */
     @Test
     public void test5() {
         //使用Lambda表达式
@@ -107,8 +121,12 @@ public class MethodRefTest {
         System.out.println(com2.compare("abd", "abc"));
     }
 
-    //BiPredicate中的boolean test(T t1, T t2);
-    //String中的boolean t1.equals(t2)
+    /**
+     * @Author wjw
+     * @Description BiPredicate中的boolean test(T t1, T t2)
+     * String中的boolean t1.equals(t2)
+     * @Date 2024/3/24 23:04
+     */
     @Test
     public void test6() {
         //使用Lambda表达式
@@ -122,21 +140,22 @@ public class MethodRefTest {
 
     }
 
-    // Function中的R apply(T t)
-    // Employee中的String getName();
+    /**
+     * @Author wjw
+     * @Description Function中的R apply(T t)
+     * Employee中的String getName();
+     * @Date 2024/3/24 23:05
+     */
     @Test
     public void test7() {
         //使用Lambda表达式
         Employee employee = new Employee(1001, "Tom", 45, 10000);
-
-        Function<Employee, String> func1 =e->e.getName();
+        Function<Employee, String> func1 = e -> e.getName();
         System.out.println(func1.apply(employee));
         System.out.println("====================");
 
         //使用方法引用
-        Function<Employee,String>func2 = Employee::getName;
+        Function<Employee, String> func2 = Employee::getName;
         System.out.println(func2.apply(employee));
-
     }
-
 }

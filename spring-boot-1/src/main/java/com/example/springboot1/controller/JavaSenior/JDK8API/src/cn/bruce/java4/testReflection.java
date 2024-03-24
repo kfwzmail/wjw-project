@@ -4,8 +4,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
- * @author Bruce
- * @create 2020-09-09 9:13
+ * @Author wjw
+ * @Description TODO
+ * @Date 2024/3/24 23:18
  */
 public class testReflection {
     // 循环次数10亿次

@@ -12,14 +12,16 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
- * 测试Stream的终止操作
- * @author bruce
- * @project_name JavaSenior
- * @package_name cn.bruce.java2
- * @create 2020-05-08 08:22
+ * @Description 测试Stream的终止操作
+ * @Author wjw
+ * @Date 2024/3/24 23:58
  */
 public class StreamAPITest3 {
-    //1-匹配与查找
+    /**
+     * @Description 1-匹配与查找
+     * @Author wjw
+     * @Date 2024/3/24 23:58
+     */
     @Test
     public void test1(){
         List<Employee> employees = EmployeeData.getEmployees();
@@ -28,6 +30,7 @@ public class StreamAPITest3 {
         //练习：是否所有的员工的年龄都大于18
         boolean allMatch = employees.stream().allMatch(e -> e.getAge() > 18);
         System.out.println(allMatch);
+
         //anyMatch(Predicate p)——检查是否至少匹配一个元素。
         //练习：是否存在员工的工资大于 5000
         boolean anyMatch = employees.stream().anyMatch(e -> e.getSalary() > 5000);
@@ -68,11 +71,16 @@ public class StreamAPITest3 {
         //forEach(Consumer c)——内部迭代
         employees.stream().forEach(System.out::println);
         System.out.println();
+
         //使用集合的遍历操作
         employees.forEach(System.out::println);
     }
 
-    //2-归约
+    /**
+     * @Description 2-归约
+     * @Author wjw
+     * @Date 2024/3/25 00:04
+     */
     @Test
     public void test3(){
         //reduce(T identity, BinaryOperator)——可以将流中元素反复结合起来，得到一个值。返回 T
@@ -88,18 +96,21 @@ public class StreamAPITest3 {
         System.out.println(sumSalary);
     }
 
-    //3-收集
+    /**
+     * @Description 3-收集
+     * @Author wjw
+     * @Date 2024/3/25 00:04
+     */
     @Test
     public void test4(){
         //collect(Collector c)——将流转换为其他形式。接收一个 Collector接口的实现，用于给Stream中元素做汇总的方法
         //练习1：查找工资大于6000的员工，结果返回为一个List或Set
         List<Employee> employees = EmployeeData.getEmployees();
         List<Employee> employeeList = employees.stream().filter(e -> e.getSalary() > 6000).collect(Collectors.toList());
-
         employeeList.forEach(System.out::println);
-        System.out.println();
+        System.out.println("--------------------");
+
         Set<Employee> employeeSet = employees.stream().filter(e -> e.getSalary() > 6000).collect(Collectors.toSet());
         employeeSet.forEach(System.out::println);
     }
-
 }

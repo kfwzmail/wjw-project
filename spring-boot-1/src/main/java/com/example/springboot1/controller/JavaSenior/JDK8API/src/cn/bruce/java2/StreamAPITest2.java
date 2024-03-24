@@ -11,15 +11,16 @@ import java.util.List;
 import java.util.stream.Stream;
 
 /**
- * 测试Stream的中间操作
- *
- * @author bruce
- * @project_name JavaSenior
- * @package_name cn.bruce.java2
- * @create 2020-05-08 08:23
+ * @Author wjw
+ * @Description 测试Stream的中间操作
+ * @Date 2024/3/24 23:36
  */
 public class StreamAPITest2 {
-    //1-筛选与切片,注意执行终止操作后，Stream流就被关闭了，使用时需要再次创建Stream流
+    /**
+     * @Author wjw
+     * @Description 1-筛选与切片,注意执行终止操作后，Stream流就被关闭了，使用时需要再次创建Stream流
+     * @Date 2024/3/24 23:38
+     */
     @Test
     public void test1() {
         List<Employee> employees = EmployeeData.getEmployees();
@@ -27,8 +28,10 @@ public class StreamAPITest2 {
         Stream<Employee> employeeStream = employees.stream();
         //练习：查询员工表中薪资大于7000的员工信息
         employeeStream.filter(e -> e.getSalary() > 7000).forEach(System.out::println);
+
+        Stream<Employee> employeeStream1 = EmployeeData.getEmployees().stream();
         //limit(n)——截断流，使其元素不超过给定数量。
-        employeeStream.limit(3).forEach(System.out::println);
+        employeeStream1.limit(3).forEach(System.out::println);
         System.out.println();
 
         //skip(n) —— 跳过元素，返回一个扔掉了前 n 个元素的流。若流中元素不足 n 个，则返回一个空流。与 limit(n) 互补
@@ -41,7 +44,11 @@ public class StreamAPITest2 {
         employeeStream.distinct().forEach(System.out::println);
     }
 
-    //2-映射
+    /**
+     * @Author wjw
+     * @Description 2-映射
+     * @Date 2024/3/24 23:44
+     */
     @Test
     public void test2() {
         List<String> list = Arrays.asList("aa", "bb", "cc", "dd");
@@ -62,10 +69,15 @@ public class StreamAPITest2 {
         //flatMap(Function f)——接收一个函数作为参数，将流中的每个值都换成另一个流，然后把所有流连接成一个流。
         Stream<Character> characterStream = list.stream().flatMap(StreamAPITest2::fromStringToStream);
         characterStream.forEach(System.out::println);
-
     }
 
-    //将字符串中的多个字符构成的集合转换为对应的Stream的实例
+    /**
+     * @Description 将字符串中的多个字符构成的集合转换为对应的Stream的实例
+     * @Author wjw
+     * @Date 2024/3/24 23:50
+     * @param: str
+     * @return: java.util.stream.Stream<java.lang.Character>
+     */
     public static Stream<Character> fromStringToStream(String str) {
         ArrayList<Character> list = new ArrayList<>();
         for (Character c : str.toCharArray()) {
@@ -74,7 +86,11 @@ public class StreamAPITest2 {
         return list.stream();
     }
 
-    //map()和flatMap()方法类似于List中的add()和addAll()方法
+    /**
+     * @Description map()和flatMap()方法类似于List中的add()和addAll()方法
+     * @Author wjw
+     * @Date 2024/3/24 23:51
+     */
     @Test
     public void test() {
         ArrayList<Object> list1 = new ArrayList<>();
@@ -90,13 +106,19 @@ public class StreamAPITest2 {
         list2.add(8);
 
         list1.add(list2);
-        System.out.println(list1);//[1, 2, 3, 4, [5, 6, 7, 8]]
-        list1.addAll(list2);
-        System.out.println(list1);//[1, 2, 3, 4, [5, 6, 7, 8], 5, 6, 7, 8]
+        //[1, 2, 3, 4, [5, 6, 7, 8]]
+        System.out.println(list1);
 
+        list1.addAll(list2);
+        //[1, 2, 3, 4, [5, 6, 7, 8], 5, 6, 7, 8]
+        System.out.println(list1);
     }
 
-    //3-排序
+    /**
+     * @Description 3-排序
+     * @Author wjw
+     * @Date 2024/3/24 23:54
+     */
     @Test
     public void test3() {
         //sorted()——自然排序
