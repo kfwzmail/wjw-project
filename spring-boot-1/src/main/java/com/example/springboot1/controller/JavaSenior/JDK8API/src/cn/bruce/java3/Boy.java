@@ -1,10 +1,9 @@
 package com.example.springboot1.controller.JavaSenior.JDK8API.src.cn.bruce.java3;
 
 /**
- * @author bruce
- * @project_name JavaSenior
- * @package_name cn.bruce.java3
- * @create 2020-05-08 10:19
+ * @Description TODO
+ * @Author wjw
+ * @Date 2024/3/25 21:51
  */
 public class Boy {
     private Girl girl;
@@ -26,8 +25,6 @@ public class Boy {
 
     @Override
     public String toString() {
-        return "Boy{" +
-                "girl=" + girl +
-                '}';
+        return "Boy{" + "girl=" + girl + '}';
     }
 }

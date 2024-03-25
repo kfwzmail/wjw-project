@@ -12,18 +12,31 @@ import java.util.Optional;
  */
 public class GirlBoyOptionalTest {
 
-    //使用原始方法进行非空检验
-    public String getGrilName1(Boy boy){
-        if (boy != null){
+    /**
+     * @Description 使用原始方法进行非空检验
+     * @Author wjw
+     * @Date 2024/3/25 21:51
+     * @param: boy
+     * @return: java.lang.String
+     */
+    public String getGrilName1(Boy boy) {
+        if (boy != null) {
             Girl girl = boy.getGirl();
-            if (girl != null){
+            if (girl != null) {
                 return girl.getName();
             }
         }
         return null;
     }
-    //使用Optional类的getGirlName()进行非空检验
-    public String getGirlName2(Boy boy){
+
+    /**
+     * @Description 使用Optional类的getGirlName()进行非空检验
+     * @Author wjw
+     * @Date 2024/3/25 21:51
+     * @param: boy
+     * @return: java.lang.String
+     */
+    public String getGirlName2(Boy boy) {
         Optional<Boy> boyOptional = Optional.ofNullable(boy);
         //此时的boy1一定非空,boy为空是返回“迪丽热巴”
         Boy boy1 = boyOptional.orElse(new Boy(new Girl("迪丽热巴")));
@@ -36,30 +49,33 @@ public class GirlBoyOptionalTest {
         return girl1.getName();
     }
 
-    //测试手动写的控制检测
+    /**
+     * @Description 测试手动写的控制检测
+     * @Author wjw
+     * @Date 2024/3/25 21:50
+     */
     @Test
-    public void test1(){
-
+    public void test1() {
         Boy boy = null;
         System.out.println(getGrilName1(boy));
-
         boy = new Boy();
         System.out.println(getGrilName1(boy));
-
         boy = new Boy(new Girl("杨幂"));
         System.out.println(getGrilName1(boy));
     }
-    //测试用Optional类写的控制检测
+
+    /**
+     * @Description 测试用Optional类写的控制检测
+     * @Author wjw
+     * @Date 2024/3/25 21:50
+     */
     @Test
-    public void test2(){
+    public void test2() {
         Boy boy = null;
         System.out.println(getGirlName2(boy));
-
         boy = new Boy();
         System.out.println(getGirlName2(boy));
-
         boy = new Boy(new Girl("杨幂"));
         System.out.println(getGirlName2(boy));
-
     }
 }

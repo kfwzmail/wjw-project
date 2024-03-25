@@ -20,7 +20,8 @@ public class OptionalTest {
     public void test1() {
         //empty():创建的Optional对象内部的value = null
         Optional<Object> op1 = Optional.empty();
-        if (!op1.isPresent()) {//Optional封装的数据是否包含数据
+        //Optional封装的数据是否包含数据
+        if (!op1.isPresent()) {
             System.out.println("数据为空");
         }
         System.out.println(op1);
@@ -33,7 +34,7 @@ public class OptionalTest {
     @Test
     public void test2() {
         String str = "hello";
-//        str = null;
+        //str = null;
         //of(T t):封装数据t生成Optional对象。要求t非空，否则报错。
         Optional<String> op1 = Optional.of(str);
         //get()通常与of()方法搭配使用。用于获取内部的封装的数据value
