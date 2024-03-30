@@ -5,10 +5,9 @@ import org.junit.Test;
 import java.util.Optional;
 
 /**
- * @author bruce
- * @project_name JavaSenior
- * @package_name cn.bruce.java3
- * @create 2020-05-08 10:20
+ * @Description TODO
+ * @Author wjw
+ * @Date 2024/3/28 23:59
  */
 public class GirlBoyOptionalTest {
 
@@ -19,7 +18,7 @@ public class GirlBoyOptionalTest {
      * @param: boy
      * @return: java.lang.String
      */
-    public String getGrilName1(Boy boy) {
+    public String getGirlName1(Boy boy) {
         if (boy != null) {
             Girl girl = boy.getGirl();
             if (girl != null) {
@@ -48,7 +47,7 @@ public class GirlBoyOptionalTest {
 
         return girl1.getName();
     }
-
+    
     /**
      * @Description 测试手动写的控制检测
      * @Author wjw
@@ -57,11 +56,11 @@ public class GirlBoyOptionalTest {
     @Test
     public void test1() {
         Boy boy = null;
-        System.out.println(getGrilName1(boy));
+        System.out.println(getGirlName1(boy));
         boy = new Boy();
-        System.out.println(getGrilName1(boy));
+        System.out.println(getGirlName1(boy));
         boy = new Boy(new Girl("杨幂"));
-        System.out.println(getGrilName1(boy));
+        System.out.println(getGirlName1(boy));
     }
 
     /**
