@@ -47,7 +47,7 @@ public class GirlBoyOptionalTest {
 
         return girl1.getName();
     }
-    
+
     /**
      * @Description 测试手动写的控制检测
      * @Author wjw
